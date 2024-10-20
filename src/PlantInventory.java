@@ -1,14 +1,7 @@
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
+import java.util.*;
 import java.time.temporal.ChronoUnit;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class PlantInventory {
@@ -70,31 +63,22 @@ public class PlantInventory {
                 System.err.println("An error occurred while writing to the file: " + e.getMessage());
             }
         }
-/*
-        public void loadPlantsFromFile(String filePath) {
-            try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    String[] data = line.split(", ");
-                    if (data.length == 4) {
-                        try {
-                            Plant plant = new Plant();
-                            plant.setName(data[0].split(": ")[1].trim());
-                            plant.setNotes(data[1].split(": ")[1].trim());
-                            plant.setDatePlanted(LocalDate.parse(data[2].split(": ")[1].trim()));
-                            plant.setDateWatering(LocalDate.parse(data[3].split(": ")[1].trim()));
-                            plants.add(plant);
-                        } catch (ArrayIndexOutOfBoundsException | DateTimeParseException e) {
-                            System.err.println("Chyba při zpracování řádku: " + line + " s chybou: " + e.getMessage());
-                        }
-                    } else {
-                        System.err.println("Špatný formát řádku: " + line);
-                    }
+
+        /*
+
+        // Simple load - working but without solid exception handling
+        public static void loadPlantsFromFile(String filePath) {
+            try (Scanner scanner = new Scanner(new File(filePath))) {
+                while (scanner.hasNextLine()) {
+                    String line = scanner.nextLine();
+                    System.out.println(line);
                 }
-            } catch (IOException e) {
-                System.err.println("Došlo k chybě při čtení ze souboru: " + e.getMessage());
+            } catch (FileNotFoundException e) {
+                System.out.println("No file found: " + filePath);
+                e.printStackTrace();
             }
-            */
+        }
+        */
 
         public String printAllPlants() {
             StringBuilder plantsOutput = new StringBuilder();
@@ -121,6 +105,7 @@ public class PlantInventory {
             }
             return plantsOutput.toString();
         }
+
         @Override
         public String toString() {
             StringBuilder plantsOutput = new StringBuilder();

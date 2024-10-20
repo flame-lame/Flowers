@@ -20,7 +20,6 @@ public class Plant {
         } finally {
             this.name = name;
         }
-        //this.name = name;
         this.notes = notes;
         this.datePlanted = datePlanted;
         this.dateWatering = dateWatering;

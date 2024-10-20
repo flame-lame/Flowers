@@ -1,6 +1,5 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,19 +14,18 @@ public class Main {
             plant.add(new Plant("Tulip " + (i), "Tulip for sale", LocalDate.now(), LocalDate.now(), (short) 14));
         }
 
+        //plantInventory.removePlant(3);
+
         PlantInventory plantInventory = new PlantInventory();
         plantInventory.setPlants(plant);
 
+        System.out.println("--> Save: Done");
+
         PlantInventory saver = plantInventory;
         saver.savePlantsToFile("/Users/flame-lame/Desktop/Flowers-save.txt");
-        /*
-        System.out.println("--> File load");
-        plantInventory.loadPlantsFromFile("/Users/flame-lame/Desktop/Flowers-load.txt");
 
-        for (Plant ignored : plantInventory.getPlants()) {
-            System.out.println(plant.toString());
-        }
-        */
+        System.out.println("--> Load");
+
         System.out.println("--> Need watering plants");
         System.out.println(plantInventory.printAllPlantsToWatering());
 
@@ -36,12 +34,6 @@ public class Main {
 
         System.out.println("--> Sorted by last watering");
         System.out.println(plantInventory.getSortedLastWatering());
-        //plantInventory.removePlant(0);
-
-        /*
-        System.out.println("--> Index");
-        System.out.println(plantInventory.getPlants().get(0).getName());
-        */
 
         System.out.println("--> All plants");
         System.out.println(plantInventory.printAllPlants());

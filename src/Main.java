@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,6 +10,10 @@ public class Main {
         plant.add(new Plant("Avocado", "For now on the stick", LocalDate.of(2024, 10, 10), LocalDate.of(2024, 10, 25), (short) 7));
         plant.add(new Plant("Herbs", "Set of small herbs", LocalDate.of(2024, 10, 20), LocalDate.of(2024, 10, 25), (short) 7));
         plant.add(new Plant("Palm", "Small little young palm", LocalDate.of(2024, 10, 29), LocalDate.of(2024, 10, 30), (short) 7));
+
+        for (int i = 1; i <= 10; i += 1) {
+            plant.add(new Plant("Tulip " + (i), "Tulip for sale", LocalDate.now(), LocalDate.now(), (short) 14));
+        }
 
         PlantInventory plantInventory = new PlantInventory();
         plantInventory.setPlants(plant);
